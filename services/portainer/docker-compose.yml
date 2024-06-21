@@ -1,0 +1,26 @@
+version: "3"
+services:
+  portainer:
+    container_name: portainer
+    hostname: portainer
+    image: portainer/portainer-ce:latest
+    volumes:
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9000:9000
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.jakefarrell.ie`)"
+      - "traefik.http.routers.portainer.entrypoints=https"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+      - "traefik.http.routers.portainer.service=portainer"
+    
+volumes:
+  data:
+
+networks:
+  default:
+    external:
+      name: traefik_net

@@ -1,0 +1,15 @@
+services:
+  portfolio-svelte:
+    image: ghcr.io/cheeselad/portfolio-svelte:latest
+    container_name: portfolio-svelte
+    hostname: portfolio-svelte
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio-svelte.entrypoints=https"
+      - "traefik.http.routers.portfolio-svelte.rule=Host(`portfolio.jakefarrell.ie`)"
+
+networks:
+  default:
+    name: traefik_net
+    external: true

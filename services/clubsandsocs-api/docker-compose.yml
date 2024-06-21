@@ -1,0 +1,15 @@
+services:
+  clubsandsocs-api:
+    image: ghcr.io/cheeselad/clubsandsocs-api:latest
+    container_name: clubsandsocs-api
+    hostname: clubsandsocs-api
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.clubsandsocs-api.entrypoints=https"
+      - "traefik.http.routers.clubsandsocs-api.rule=Host(`clubsandsocs.jakefarrell.ie`)"
+
+networks:
+  default:
+    external:
+      name: traefik_net
