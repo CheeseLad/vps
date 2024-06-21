@@ -27,3 +27,5 @@ acme-dcumps.json
 .wget-hsts
 services/flame/data
 servers.json
+/services/wiki-dcu-lol/images
+LocalSettings.php
