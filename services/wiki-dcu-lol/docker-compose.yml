@@ -3,6 +3,7 @@ services:
     image: mediawiki
     hostname: wiki-dcu-lol
     container_name: wiki-dcu-lol
+    restart: unless-stopped
     volumes:
       - ./LocalSettings.php:/var/www/html/LocalSettings.php
       - database:/var/www/data

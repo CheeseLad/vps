@@ -1,5 +1,6 @@
 .cache
 .docker
+old.txt
 .local
 .vscode-server
 .dotnet
@@ -29,3 +30,6 @@ services/flame/data
 servers.json
 /services/wiki-dcu-lol/images
 LocalSettings.php
+config.py
+event_config.py
+env-config.js

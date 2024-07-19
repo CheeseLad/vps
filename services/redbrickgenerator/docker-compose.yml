@@ -1,0 +1,18 @@
+services:
+  redbrickgenerator:
+    image: ghcr.io/cheeselad/redbrick-email-generator:latest
+    container_name: redbrickgenerator
+    hostname: redbrickgenerator
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.redbrickgenerator.entrypoints=https"
+      - "traefik.http.routers.redbrickgenerator.rule=Host(`redbrickgenerator.jakefarrell.ie`)"
+    volumes:
+      - ./event_config.py:/python-docker/event_config.py
+      - ./config.py:/python-docker/config.py
+
+networks:
+  default:
+    name: traefik_net
+    external: true

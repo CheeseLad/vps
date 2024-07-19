@@ -11,5 +11,5 @@ services:
 
 networks:
   default:
-    external:
-      name: traefik_net
+    name: traefik_net
+    external: true
