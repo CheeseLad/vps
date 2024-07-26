@@ -9,11 +9,15 @@ services:
       - "traefik.http.routers.ca298-universitysystem.entrypoints=https"
       - "traefik.http.routers.ca298-universitysystem.rule=Host(`universitysystem.jakefarrell.ie`)"
 
-#  ca298-universitysystem-backend:
-#    image: scrineymvm/ca298restassignment:latest
-#    container_name: ca298-universitysystem-backend
-#    hostname: ca298-universitysystem-backend
-#    restart: unless-stopped
+  ca298-universitysystem-backend:
+    image: ghcr.io/cheeselad/ca298-universitysystem-api:latest
+    container_name: ca298-universitysystem-backend
+    hostname: ca298-universitysystem-backend
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ca298-universitysystem-backend.entrypoints=https"
+      - "traefik.http.routers.ca298-universitysystem-backend.rule=Host(`universitysystemapi.jakefarrell.ie`)"
 
 networks:
   default:

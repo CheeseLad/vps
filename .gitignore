@@ -33,3 +33,6 @@ LocalSettings.php
 config.py
 event_config.py
 env-config.js
+configs
+*.sql
+*.tar.gz
