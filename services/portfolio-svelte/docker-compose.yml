@@ -12,14 +12,6 @@ services:
       - "traefik.http.routers.personal-site-base-url.entrypoints=https"
       - "traefik.http.routers.personal-site-base-url.rule=Host(`jakefarrell.ie`)"
 
-  watchtower-portfolio-svelte:
-    image: containrrr/watchtower
-    container_name: watchtower-portfolio-svelte
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 600
-
 networks:
   default:
     name: traefik_net
