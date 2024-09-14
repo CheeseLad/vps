@@ -8,6 +8,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.clubsandsocs-api.entrypoints=https"
       - "traefik.http.routers.clubsandsocs-api.rule=Host(`clubsandsocs.jakefarrell.ie`)"
+    environment:
+      - FLASK_APP=api/__init__.py
+      - FLASK_RUN_PORT=5001
 
 networks:
   default:

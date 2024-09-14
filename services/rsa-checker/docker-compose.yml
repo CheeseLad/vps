@@ -1,15 +1,30 @@
 services:
-  rsa-checker:
-    image: ghcr.io/cheeselad/rsa-checker:latest
-    container_name: rsa-checker
-    hostname: rsa-checker
+  rsa-checker-frontend:
+    image: ghcr.io/cheeselad/rsa-checker-frontend:latest
+    container_name: rsa-checker-frontend
+    hostname: rsa-checker-frontend
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.rsa-checker.entrypoints=https"
-      - "traefik.http.routers.rsa-checker.rule=Host(`rsachecker.jakefarrell.ie`)"
+      - "traefik.http.routers.rsa-checker-frontend.entrypoints=https"
+      - "traefik.http.routers.rsa-checker-frontend.rule=Host(`rsachecker.jakefarrell.ie`)"
+    networks:
+      - default
+      - rsa_checker_net
+
+  rsa-checker-backend:
+    image: ghcr.io/cheeselad/rsa-checker-backend:latest
+    container_name: rsa-checker-backend
+    hostname: rsa-checker-backend
+    restart: unless-stopped
+    networks:
+      - rsa_checker_net
+    expose:
+      - "5000"
 
 networks:
   default:
     name: traefik_net
     external: true
+  rsa_checker_net:
+    driver: bridge
