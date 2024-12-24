@@ -1,0 +1,19 @@
+services:
+  dcufotosoc-comingsoon:
+    image: ghcr.io/dcu-fotosoc/website-comingsoon-react:latest
+    container_name: dcufotosoc-comingsoon
+    hostname: dcufotosoc-comingsoon
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dcufotosoc-comingsoon.entrypoints=https"
+      - "traefik.http.routers.dcufotosoc-comingsoon.rule=Host(`www.dcufotosoc.ie`)"
+      - "traefik.http.routers.dcufotosoc-comingsoon.tls.certresolver=dcufotosoc"
+      - "traefik.http.routers.dcufotosoc-comingsoon-base-url.entrypoints=https"
+      - "traefik.http.routers.dcufotosoc-comingsoon-base-url.rule=Host(`dcufotosoc.ie`)"
+      - "traefik.http.routers.dcufotosoc-comingsoon-base-url.tls.certresolver=dcufotosoc"
+
+networks:
+  default:
+    name: traefik_net
+    external: true

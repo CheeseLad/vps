@@ -11,7 +11,6 @@ services:
     volumes:
       - ./env-config.js:/usr/share/nginx/html/env-config.js
 
-
 networks:
   default:
     name: traefik_net

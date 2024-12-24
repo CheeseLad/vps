@@ -4,13 +4,15 @@ services:
     container_name: clubsandsocs-api
     hostname: clubsandsocs-api
     restart: unless-stopped
+    environment:
+      - PORT=4000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.clubsandsocs-api.entrypoints=https"
       - "traefik.http.routers.clubsandsocs-api.rule=Host(`clubsandsocs.jakefarrell.ie`)"
-    environment:
-      - FLASK_APP=api/__init__.py
-      - FLASK_RUN_PORT=5001
+      - "traefik.http.services.clubsandsocs-api.loadbalancer.server.port=4000"
+      - "traefik.http.routers.clubsandsocs-api.service=clubsandsocs-api"
+
 
 networks:
   default:
