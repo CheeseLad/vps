@@ -1,1 +1,0 @@
-rclone copy "/home/debian" "DCU-GCrypt-2024:/VPS/home/debian" -v --config /home/debian/scripts/rclone/rclone.conf --exclude-from /home/debian/scripts/rclone/filter.txt --log-file "/home/debian/scripts/rclone/backup-vps.log"

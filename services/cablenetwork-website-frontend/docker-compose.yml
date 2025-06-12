@@ -1,0 +1,17 @@
+services:
+  cablenetwork-website-frontend:
+    image: ghcr.io/cheeselad/cablenetwork-website-frontend:latest
+    container_name: cablenetwork-website-frontend
+    hostname: cablenetwork-website-frontend
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cablenetwork-website-frontend.entrypoints=https"
+      - "traefik.http.routers.cablenetwork-website-frontend.rule=Host(`www.cablenetwork.xyz`)"
+      - "traefik.http.routers.cablenetwork-website-frontend-base-url.entrypoints=https"
+      - "traefik.http.routers.cablenetwork-website-frontend-base-url.rule=Host(`cablenetwork.xyz`)"
+
+networks:
+  default:
+    name: traefik_net
+    external: true
