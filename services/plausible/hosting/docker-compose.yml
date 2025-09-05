@@ -32,7 +32,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.plausible.entrypoints=https"
-      - "traefik.http.routers.plausible.rule=Host(`plausible.jakefarrell.ie`)"
+      - "traefik.http.routers.plausible.rule=Host(`plausible.jakefarrell.ie`) || Host(`pa.jakefarrell.ie`)"
       - "traefik.http.services.plausible.loadbalancer.server.port=8000"
 
 volumes:

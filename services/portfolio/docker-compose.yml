@@ -1,7 +1,7 @@
 services:
-  portfolio-svelte:
-    image: ghcr.io/cheeselad/portfolio-svelte:latest
-    container_name: portfolio-svelte
+  portfolio:
+    image: ghcr.io/cheeselad/portfolio:latest
+    container_name: portfolio
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
