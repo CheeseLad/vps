@@ -16,12 +16,8 @@ entryPoints:
       tls:
         certresolver: cloudflare
         domains:
-          - main: "dcu.lol"
-            sans: "*.dcu.lol"
           - main: "jakefarrell.ie"
             sans: "*.jakefarrell.ie"
-          - main: "cheeselad.xyz"
-            sans: "*.cheeselad.xyz"
 
 certificatesResolvers:
   cloudflare:
@@ -38,6 +34,6 @@ certificatesResolvers:
 providers:
   docker:
     watch: true
-    network: "proxy"
+    network: "traefik_net"
     exposedbydefault: false
     endpoint: "unix:///var/run/docker.sock"
