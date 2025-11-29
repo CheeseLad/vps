@@ -8,6 +8,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.ca298-pizzashop.entrypoints=https"
       - "traefik.http.routers.ca298-pizzashop.rule=Host(`pizzashop.jakefarrell.ie`)"
+    volumes:
+      - ./db.sqlite3:/app/pizzashop/db.sqlite3
 
 networks:
   default:

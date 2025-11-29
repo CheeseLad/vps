@@ -15,6 +15,7 @@
 .wget-hsts
 
 stuff
+unused
 zipline/public
 zipline/uploads
 services/shlink/db
@@ -25,6 +26,7 @@ services/plausible/database_backup
 backups/plausible/plausible-events
 services/thecollegeview-app/html
 services/traefik/docker-compose.yml
+services/generator
 
 *.env
 *.log
