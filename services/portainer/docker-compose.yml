@@ -1,7 +1,6 @@
 services:
   portainer:
     container_name: portainer
-    hostname: portainer
     image: portainer/portainer-ce:latest
     volumes:
       - ./data:/data

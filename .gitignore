@@ -27,6 +27,7 @@ backups/plausible/plausible-events
 services/thecollegeview-app/html
 services/traefik/docker-compose.yml
 services/generator
+backups/ca298-pizzashop
 
 *.env
 *.log
@@ -38,3 +39,4 @@ services/generator
 *.json
 *.py
 *.php
+*.json.bak

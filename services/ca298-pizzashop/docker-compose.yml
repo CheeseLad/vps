@@ -2,7 +2,6 @@ services:
   ca298-pizzashop:
     image: ghcr.io/cheeselad/ca298-pizzashop:latest
     container_name: ca298-pizzashop
-    hostname: ca298-pizzashop
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
