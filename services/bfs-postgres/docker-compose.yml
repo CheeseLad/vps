@@ -1,0 +1,30 @@
+services:
+  bfs-postgres:
+    image: pgvector/pgvector:0.8.1-pg18-trixie
+    container_name: bfs-postgres
+    restart: unless-stopped
+    ports:
+      - "54346:5432"
+    environment:
+      POSTGRES_DB: better_file_search_db
+      POSTGRES_USER: bfs
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - bfs_pgdata:/var/lib/postgresql
+
+  bfs-postgres-adrian:
+    image: pgvector/pgvector:0.8.1-pg18-trixie
+    container_name: bfs-postgres-adrian
+    restart: unless-stopped
+    ports:
+      - "53346:5432"
+    environment:
+      POSTGRES_DB: better_file_search_db
+      POSTGRES_USER: bfs
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - bfs_pgdata_adrian:/var/lib/postgresql
+
+volumes:
+  bfs_pgdata:
+  bfs_pgdata_adrian:

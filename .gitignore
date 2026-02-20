@@ -4,6 +4,7 @@
 .vscode-server
 .dotnet
 .config
+.copilot
 .ssh
 
 .bash_history
