@@ -5,3 +5,5 @@
 /home/debian/scripts/backup/backup-shlink.sh
 /home/debian/scripts/backup/backup-the-experiment.sh
 /home/debian/scripts/backup/backup-zipline.sh
+/home/debian/scripts/backup/backup-listmonk.sh
+/home/debian/scripts/backup/backup-legacy-leaderboards.sh
