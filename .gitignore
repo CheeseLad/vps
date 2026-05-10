@@ -10,33 +10,17 @@
 .bash_history
 .bash_logout
 .lesshst
-.profile
-.selected_editor
-.sudo_as_admin_successful
-.wget-hsts
 
-stuff
-unused
+backups
 zipline/public
 zipline/uploads
-services/shlink/db
 services/portainer/data
-services/wiki-dcu-lol/images
-services/flame/data
 services/plausible/database_backup
-backups/plausible/plausible-events
-services/thecollegeview-app/html
 services/traefik/docker-compose.yml
 services/generator
-backups/ca298-pizzashop
 
 *.env
 *.log
-*.sql
-*.sqlite
-*.sqlite3
 *.conf
 *.json
-*.py
-*.php
 *.json.bak
