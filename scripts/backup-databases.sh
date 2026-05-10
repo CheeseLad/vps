@@ -8,8 +8,8 @@ if [ -f "$SCRIPT_DIR/.env" ]; then
   set +a
 fi
 
-if [ -z "$DISCORD_WEBHOOK_URL" ]; then
-  echo "ERROR: DISCORD_WEBHOOK_URL is not set"
+if [ -z "$DATABASE_DISCORD_WEBHOOK_URL" ]; then
+  echo "ERROR: DATABASE_DISCORD_WEBHOOK_URL is not set"
   exit 1
 fi
 
@@ -21,6 +21,10 @@ BACKUP_DIR="/home/debian/backups"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 
 # Service definitions
+CONTAINERS["database"]="database"
+COMMANDS["database"]="/usr/bin/mysqldump -u root --password=$MYSQL_ROOT_PASSWORD --all-databases"
+OUTPUTS["database"]="$BACKUP_DIR/database/database_mysql_$TIMESTAMP.sql"
+
 CONTAINERS["listmonk"]="listmonk_db"
 COMMANDS["listmonk"]="pg_dump listmonk -U listmonk"
 OUTPUTS["listmonk"]="$BACKUP_DIR/listmonk/listmonk_postgres_$TIMESTAMP.sql"
@@ -33,6 +37,14 @@ CONTAINERS["plausible-clickhouse"]="plausible-plausible_events_db-1"
 COMMANDS["plausible-clickhouse"]="clickhouse-backup create"
 OUTPUTS["plausible-clickhouse"]="$BACKUP_DIR/plausible/plausible_clickhouse_$TIMESTAMP.sql"
 
+CONTAINERS["zipline"]="zipline-database"
+COMMANDS["zipline"]="pg_dump -U postgres -d postgres"
+OUTPUTS["zipline"]="$BACKUP_DIR/zipline/zipline_postgres_$TIMESTAMP.sql"
+
+CONTAINERS["legacy-leaderboards"]="legacy-leaderboards"
+COMMANDS["legacy-leaderboards"]="cp /home/debian/services/legacy-leaderboards/db.sqlite3"
+OUTPUTS["legacy-leaderboards"]="$BACKUP_DIR/legacy-leaderboards/legacy_leadersboards_sqlite_$TIMESTAMP.sqlite3"
+
 run_backup() {
   local name="$1"
   local container="${CONTAINERS[$name]}"
@@ -44,7 +56,11 @@ run_backup() {
   mkdir -p "$retention_dir"
 
   # Run docker exec
-  docker exec "$container" sh -c "$command" > "$output_file"
+  if [ "$name" == "legacy-leaderboards" ]; then
+    $command "$output_file"
+  else
+    docker exec "$container" sh -c "$command" > "$output_file"
+  fi
 
   # Cleanup old backups
   find "$retention_dir" -type f -mtime +7 -exec rm -f {} \;
@@ -84,7 +100,7 @@ send_webhook() {
   curl -X POST \
     -H "Content-Type: application/json" \
     -d "$JSON" \
-    "${DISCORD_WEBHOOK_URL}"
+    "${DATABASE_DISCORD_WEBHOOK_URL}"
 }
 
 for service in "${!CONTAINERS[@]}"; do

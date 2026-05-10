@@ -36,7 +36,6 @@ backups/ca298-pizzashop
 *.sqlite
 *.sqlite3
 *.conf
-*.sh
 *.json
 *.py
 *.php
