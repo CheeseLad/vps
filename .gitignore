@@ -8,10 +8,10 @@
 .ssh
 
 .bash_history
-.bash_logout
 .lesshst
 
 backups
+storage
 zipline/public
 zipline/uploads
 services/portainer/data

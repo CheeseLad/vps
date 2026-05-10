@@ -9,7 +9,7 @@ services:
       - DEBUG=$DEBUG
       - ALLOWED_HOSTS=$ALLOWED_HOSTS
     volumes:
-      - ./db.sqlite3:/app/db.sqlite3
+      - ~/storage/legacy-leaderboards/db.sqlite3:/app/db.sqlite3
     restart: unless-stopped
     labels:
       - "traefik.enable=true"

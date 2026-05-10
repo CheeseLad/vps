@@ -42,7 +42,7 @@ COMMANDS["zipline"]="pg_dump -U postgres -d postgres"
 OUTPUTS["zipline"]="$BACKUP_DIR/zipline/zipline_postgres_$TIMESTAMP.sql"
 
 CONTAINERS["legacy-leaderboards"]="legacy-leaderboards"
-COMMANDS["legacy-leaderboards"]="cp /home/debian/services/legacy-leaderboards/db.sqlite3"
+COMMANDS["legacy-leaderboards"]="cp /home/debian/storage/legacy-leaderboards/db.sqlite3"
 OUTPUTS["legacy-leaderboards"]="$BACKUP_DIR/legacy-leaderboards/legacy_leadersboards_sqlite_$TIMESTAMP.sqlite3"
 
 run_backup() {
