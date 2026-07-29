@@ -8,19 +8,15 @@
 .ssh
 
 .bash_history
-.lesshst
 
 backups
-storage
-zipline/public
-zipline/uploads
 services/portainer/data
-services/plausible/database_backup
 services/traefik/docker-compose.yml
-services/generator
+unused-services
 
 *.env
 *.log
 *.conf
 *.json
 *.json.bak
+*.sqlite3
