@@ -1,5 +1,6 @@
 .vscode-server/**
 .local/lib/**
 .cache/**
-.docker/instances/**
-snap/**
+services/database/data/**
+services/portainer/data/**
+scripts/rclone/backup-vps.log

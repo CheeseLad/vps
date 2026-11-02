@@ -1,18 +1,16 @@
 .cache
-.docker
-.local
-.vscode-server
-.dotnet
 .config
 .copilot
+.docker
+.dotnet
+.gemini
+.local
 .ssh
+.vscode-server
+backups
+services/generator
 
 .bash_history
-
-backups
-services/portainer/data
-services/traefik/docker-compose.yml
-unused-services
 
 *.env
 *.log

@@ -18,7 +18,7 @@ LOG_FILE="/home/debian/scripts/rclone/backup-vps.log"
 CONFIG="/home/debian/scripts/rclone/rclone.conf"
 FILTER="/home/debian/scripts/rclone/filter.txt"
 SOURCE="/home/debian"
-DEST="DCU-GCrypt-2024:/VPS/home/debian"
+DEST="Personal-GCrypt-2026:/VPS/home/debian"
 
 # Remove old log
 rm -f "$LOG_FILE"
