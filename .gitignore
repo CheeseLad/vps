@@ -8,7 +8,9 @@
 .ssh
 .vscode-server
 backups
+
 services/generator
+services/portainer
 
 .bash_history
 
@@ -18,3 +20,4 @@ services/generator
 *.json
 *.json.bak
 *.sqlite3
+*.sql
